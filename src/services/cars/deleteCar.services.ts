@@ -12,8 +12,6 @@ const deleteCarsService = async (id: number): Promise<void> => {
 
     if(car.isActive == false) throw new AppError("Car not found!", 404)
 
-    car.isActive = false
-
     await carsRepo.softRemove(car!)
 }
 

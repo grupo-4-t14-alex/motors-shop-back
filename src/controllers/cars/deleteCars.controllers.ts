@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import deleteCarsServices from "../services/cars/deleteCars.services";
+import { deleteCarsService } from "../../services";
 
 const deleteProductsControllers = async (req: Request, res: Response): Promise<Response> => {
     const productId: number = parseInt(req.params.id)
 
-    await deleteCarsServices(productId)
+    await deleteCarsService(productId)
     
     return res.status(204).send()
 }
