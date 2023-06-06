@@ -1,4 +1,5 @@
 import { 
+    BeforeSoftRemove,
     Column, 
     Entity, 
     PrimaryGeneratedColumn 
@@ -39,7 +40,11 @@ class Car {
 
     @Column({ type: "boolean", default: true })
     isActive: boolean
-
+    
+    @BeforeSoftRemove()
+    updateStatus() {
+        this.isActive = false
+    }
 }
 
 export {
