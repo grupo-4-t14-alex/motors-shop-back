@@ -1,11 +1,16 @@
 import { Router } from "express";
-import { createCarController, deleteCarsControllers, listCarsController } from "../controllers";
+import {
+  createCarController,
+  deleteCarsControllers,
+  listCarsController,
+  updateCarController,
+} from "../controllers";
 
+const carRoutes: Router = Router();
 
-const carRoutes : Router = Router()
+carRoutes.post("", createCarController);
+carRoutes.patch("/:id", updateCarController);
+carRoutes.delete("", deleteCarsControllers);
+carRoutes.get("", listCarsController);
 
-carRoutes.post("", createCarController)
-carRoutes.delete("", deleteCarsControllers)
-carRoutes.get("", listCarsController)
-
-export default carRoutes
+export { carRoutes };
