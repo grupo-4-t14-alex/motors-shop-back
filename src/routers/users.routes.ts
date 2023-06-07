@@ -4,4 +4,4 @@ const userRoutes : Router = Router()
 
 userRoutes.get("", )
 
-export default userRoutes
+export { userRoutes }

@@ -1,10 +1,3 @@
-import {
-    ICarCreateRequest,
-    ICar
-} from "./cars.interfaces"
+import { ICarCreateRequest, ICar, ICarUpdateRequest } from "./cars.interfaces";
 
-export {
-    ICarCreateRequest,
-    ICar
-}
-
+export { ICarCreateRequest, ICarUpdateRequest, ICar };

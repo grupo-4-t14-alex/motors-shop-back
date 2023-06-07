@@ -1,5 +1,5 @@
-import carRoutes from "./cars.routes";
-import userRoutes from "./users.routes";
+import{ carRoutes }from "./cars.routes";
+import { userRoutes }from "./users.routes";
 
 export {
     userRoutes,

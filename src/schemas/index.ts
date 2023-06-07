@@ -1,9 +1,3 @@
-import { 
-    createCarSchema, 
-    carSchema } 
-from "./cars.schemas"
+import { createCarSchema, carSchema, updateCarSchema } from "./cars.schemas";
 
-export {
-    createCarSchema,
-    carSchema
-}
+export { updateCarSchema, createCarSchema, carSchema };
