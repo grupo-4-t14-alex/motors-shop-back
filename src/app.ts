@@ -10,6 +10,5 @@ app.use("/users", userRoutes)
 app.use("/cars", carRoutes)
 
 
-
 app.use(errorHandler)
 export default app
