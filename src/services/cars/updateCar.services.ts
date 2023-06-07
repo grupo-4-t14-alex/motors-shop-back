@@ -4,22 +4,26 @@ import { Car } from "../../entities";
 import { AppError } from "../../errors";
 import { ICar, ICarUpdateRequest } from "../../interfaces/cars.interfaces";
 
-//const updateCarsService = async (CarId: number, body:ICarUpdateRequest): Promise<Car> => {
+// const updateCarsService = async (CarId: number, carData:ICarUpdateRequest): Promise<Car> => {
+const updateCarsService = async (CarId: number, carData:any)=> {
 
-const updateCarsService = async (CarId: number, body: any) => {
   const carsRepo: Repository<Car> = AppDataSource.getRepository(Car);
 
-  //depois precisa pesquisar com o usuario dono do anuncio
 
-  const car: Car | null = await carsRepo.findOneBy({ id: CarId });
+  const car: Car | null = await carsRepo.findOne({ 
+    where:{
+    id:CarId
+  }});
 
   if (!car) throw new AppError("Car not found!", 404);
 
   if (car.isActive == false) throw new AppError("Car not found!", 404);
 
+  //Object.assign(car, carData)
+
   const UpdatedCar = carsRepo.create({
     ...car,
-    ...body,
+    ...carData
   });
 
   await carsRepo.save(car);
@@ -27,4 +31,4 @@ const updateCarsService = async (CarId: number, body: any) => {
   return UpdatedCar;
 };
 
-export default updateCarsService;
+export { updateCarsService }
