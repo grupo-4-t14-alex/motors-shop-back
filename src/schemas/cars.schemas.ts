@@ -13,18 +13,12 @@ const createCarSchema = z.object({
     description: z.string(),
 })
 
-
-const updateCarSchema = createCarSchema.partial()
-
 const carSchema = createCarSchema.extend({
     id: z.number(),
     isActive: z.boolean().default(true),
 })
 
-
-
 export {
     createCarSchema,
-    carSchema,
-    updateCarSchema
+    carSchema
 }
