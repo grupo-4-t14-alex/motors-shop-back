@@ -1,17 +1,14 @@
 import { Repository } from "typeorm"
 import { Car } from "../../entities"
 import { AppDataSource } from "../../data-source"
-import { carArraySchema } from "../../schemas"
-import { TCarArray } from "../../interfaces"
+import { ICar } from "../../interfaces"
 
-export const listCarsService = async (): Promise<TCarArray> => {
+export const listCarsService = async (): Promise<ICar[]> => {
     
     const carsRepository: Repository<Car> = AppDataSource.getRepository(Car)
 
-    const findCar: Array<Car> = await carsRepository.find()
+    const findCars: Array<ICar> = await carsRepository.find()
 
-    const cars = carArraySchema.parse(findCar)
-
-    return cars
+    return findCars
 
 }
