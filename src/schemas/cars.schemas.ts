@@ -19,5 +19,4 @@ const carSchema = createCarSchema.extend({
 
 const updateCarSchema = carSchema.partial();
 
-
 export { createCarSchema, carSchema, updateCarSchema };

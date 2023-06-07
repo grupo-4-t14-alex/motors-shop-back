@@ -7,7 +7,7 @@ import { Car } from "../../entities";
 const updateCarController = async (req: Request, res: Response) => {
   const carData: ICarUpdateRequest = updateCarSchema.parse(req.body);
   const carId: number = parseInt(req.params.carId);
-  const newCar:Car = await updateCarsService(carId, carData);
+  const newCar: Car = await updateCarsService(carId, carData);
   return res.status(200).json(newCar);
 };
 

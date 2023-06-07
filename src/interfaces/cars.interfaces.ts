@@ -1,13 +1,8 @@
 import { z } from "zod";
-import { carSchema, createCarSchema,  } from "../schemas";
-import { updateCarSchema } from "../schemas";
+import { carSchema, createCarSchema, updateCarSchema } from "../schemas";
 
-type ICarCreateRequest = z.infer<typeof createCarSchema>
-type ICarUpdateRequest = z.infer<typeof updateCarSchema>
-type ICar = z.infer<typeof carSchema>
+type ICarCreateRequest = z.infer<typeof createCarSchema>;
+type ICar = z.infer<typeof carSchema>;
+type ICarUpdateRequest = z.infer<typeof updateCarSchema>;
 
-export {
-    ICarCreateRequest,
-    ICar,
-    ICarUpdateRequest
-}
+export { ICarCreateRequest, ICar, ICarUpdateRequest };

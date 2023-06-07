@@ -1,9 +1,9 @@
 
 gerar
-yarn typeorm migration:generate ./src/migrations/InitialMigration -d ./src/data-source.ts 
+yarn typeorm migration:generate ./src/migrations/InitialMigration -- -d ./src/data-source.ts 
 
 rodar 
-yarn typeorm migration:run -d ./src/data-source 
+yarn typeorm migration:run -- -d ./src/data-source 
 
 reverter 
-typeorm migration:revert -d ./src/data-source
+typeorm migration:revert -- -d ./src/data-source

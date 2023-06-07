@@ -1,27 +1,30 @@
-import { Repository } from "typeorm";
+import { DeepPartial, Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Car } from "../../entities";
 import { AppError } from "../../errors";
-import { ICarUpdateRequest } from "../../interfaces";
+import { ICar, ICarUpdateRequest } from "../../interfaces/cars.interfaces";
 
-const updateCarsService = async (
-  carId: number,
-  carData: ICarUpdateRequest
-): Promise<Car> => {
+//const updateCarsService = async (CarId: number, body:ICarUpdateRequest): Promise<Car> => {
+
+const updateCarsService = async (CarId: number, body: any) => {
   const carsRepo: Repository<Car> = AppDataSource.getRepository(Car);
-  const car: Car | null = await carsRepo.findOneBy({ id: carId });
 
-  if (!car){
-    throw new AppError("Car not found!", 404);
-  }
-  if (car.isActive == false){
-    throw new AppError("Car not found!", 404);
-  }
+  //depois precisa pesquisar com o usuario dono do anuncio
 
-  Object.assign(car, carData);
-  const updatedCar: Car = carsRepo.create(car);
-  await carsRepo.save(updatedCar);
-  return updatedCar;
+  const car: Car | null = await carsRepo.findOneBy({ id: CarId });
+
+  if (!car) throw new AppError("Car not found!", 404);
+
+  if (car.isActive == false) throw new AppError("Car not found!", 404);
+
+  const UpdatedCar = carsRepo.create({
+    ...car,
+    ...body,
+  });
+
+  await carsRepo.save(car);
+
+  return UpdatedCar;
 };
 
-export { updateCarsService };
+export default updateCarsService;
