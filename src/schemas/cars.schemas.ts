@@ -1,4 +1,4 @@
-import { z, union } from "zod";
+import { z } from "zod";
 
 const createCarSchema = z.object({
     userId: z.number(),
