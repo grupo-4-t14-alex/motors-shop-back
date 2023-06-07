@@ -1,4 +1,10 @@
-import { z } from "zod";
-import { carArraySchema } from "../schemas";
+import {
+    ICarCreateRequest,
+    ICar
+} from "./cars.interfaces"
 
-export type TCarArray = z.infer<typeof carArraySchema>
+export {
+    ICarCreateRequest,
+    ICar
+}
+

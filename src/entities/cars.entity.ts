@@ -20,8 +20,8 @@ class Car {
     @Column({ type: "int" })
     year: number
 
-    @Column({ length: 50 })
-    fuel: string
+    @Column({ type: "int" })
+    fuel: number
 
     @Column({ length: 7 })
     km: string
@@ -29,10 +29,10 @@ class Car {
     @Column({ length: 50 })
     color: string
 
-    @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
-    fipePrice: number | string
+    @Column({ type: "int"})
+    fipePrice: number
 
-    @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
+    @Column({ type: "int"})
     sellPrice: number
 
     @Column({ type: "text" })
