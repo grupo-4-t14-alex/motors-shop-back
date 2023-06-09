@@ -1,14 +1,18 @@
 import { Request, Response } from "express";
-import { updateCarService } from "../../services";
-import { ICarUpdateRequest } from "../../interfaces";
+import { ICar, ICarUpdateRequest } from "../../interfaces";
 import { updateCarSchema } from "../../schemas";
-import { Car } from "../../entities";
+import { updateCarService } from "../../services";
 
-const updateCarController = async (req: Request, res: Response) => {
-  const carData: ICarUpdateRequest = updateCarSchema.parse(req.body);
-  const carId: number = parseInt(req.params.id);
-  const newCar: Car[] = await updateCarService(carId, carData);
-  return res.status(200).json(newCar);
-};
+const updateCarController = async (req: Request, res: Response): Promise<Response> => {
 
-export { updateCarController };
+  const carId: number = parseInt(req.params.id)
+  const carData: ICarUpdateRequest = updateCarSchema.parse(req.body)
+  const updatedCar = await updateCarService(carId, carData)
+
+  return res.status(200).json(updatedCar)
+
+}
+
+export { 
+  updateCarController
+}
