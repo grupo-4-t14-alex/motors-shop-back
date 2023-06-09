@@ -6,17 +6,31 @@ const createCarSchema = z.object({
   model: z.string().max(120),
   year: z.number(),
   fuel: z.number(),
-  km: z.string(),
+  km: z.number(),
   color: z.string().max(50),
   fipePrice: z.number(),
   sellPrice: z.number(),
   description: z.string(),
-});
+})
+
 const carSchema = createCarSchema.extend({
   id: z.number(),
   isActive: z.boolean().default(true),
-});
+})
 
-const updateCarSchema = carSchema.partial();
+const updateCarSchema = carSchema.partial({
+  brand: true,
+  model: true,
+  year: true,
+  fuel: true,
+  km: true,
+  color: true,
+  fipePrice:true,
+  sellPrice: true,
+  description: true,
+  isActive: true,
+}).omit({
+  id: true
+})
 
-export { createCarSchema, carSchema, updateCarSchema };
+export { createCarSchema, carSchema, updateCarSchema }

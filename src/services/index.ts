@@ -1,11 +1,11 @@
-import deleteCarsService from "./cars/deleteCar.services";
 import { createCarService } from "./cars/createCar.services";
+import { deleteCarService } from "./cars/deleteCar.services";
 import { listCarsService } from "./cars/listCars.services";
-import { updateCarsService } from "./cars/updateCar.services";
+import { updateCarService } from "./cars/updateCar.services";
 
 export {
-  deleteCarsService,
+  deleteCarService,
   createCarService,
   listCarsService,
-  updateCarsService,
-};
+  updateCarService,
+}
