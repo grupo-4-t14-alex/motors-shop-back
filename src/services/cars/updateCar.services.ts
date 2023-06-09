@@ -4,8 +4,7 @@ import { Car } from "../../entities";
 import { AppError } from "../../errors";
 import { ICar, ICarUpdateRequest } from "../../interfaces/cars.interfaces";
 
-// const updateCarsService = async (CarId: number, carData:ICarUpdateRequest): Promise<Car> => {
-const updateCarsService = async (CarId: number, carData:any)=> {
+const updateCarService = async (CarId: number, carData:any)=> {
 
   const carsRepo: Repository<Car> = AppDataSource.getRepository(Car);
 
@@ -19,8 +18,6 @@ const updateCarsService = async (CarId: number, carData:any)=> {
 
   if (car.isActive == false) throw new AppError("Car not found!", 404);
 
-  //Object.assign(car, carData)
-
   const UpdatedCar = carsRepo.create({
     ...car,
     ...carData
@@ -31,4 +28,4 @@ const updateCarsService = async (CarId: number, carData:any)=> {
   return UpdatedCar;
 };
 
-export { updateCarsService }
+export { updateCarService }

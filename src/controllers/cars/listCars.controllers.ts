@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { listCarsService } from "../../services";
 
-export const listCarsController =async (request: Request, response: Response) => {
+export const listCarsController =async (req: Request, res: Response) => {
     
     const cars = await listCarsService()
 
-    return response.status(200).json(cars)
+    return res.status(200).json(cars)
 
 }

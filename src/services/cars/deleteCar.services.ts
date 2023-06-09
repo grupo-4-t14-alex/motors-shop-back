@@ -1,18 +1,24 @@
 import { Repository } from "typeorm"
 import { AppDataSource } from "../../data-source"
-import {Car} from '../../entities'
+import { Car } from '../../entities'
 import { AppError } from "../../errors"
 
-const deleteCarsService = async (id: number): Promise<void> => {
-    const carsRepo: Repository<Car> = AppDataSource.getRepository(Car)
+const deleteCarService = async (carId: number): Promise<void> => {
+    
+    const carsRepository: Repository<Car> = AppDataSource.getRepository(Car)
 
-    const car: Car | null = await carsRepo.findOneBy({id})
+    const findCar: Car | null = await carsRepository.findOneBy({
+        id: carId
+    })
 
-    if(!car) throw new AppError("Car not found!", 404)
+    if(!findCar) throw new AppError("Car not found!", 404)
 
-    if(car.isActive == false) throw new AppError("Car not found!", 404)
+    await carsRepository.delete({
+        id: carId
+    })
 
-    await carsRepo.softRemove(car!)
 }
 
-export default deleteCarsService
+export {
+    deleteCarService
+} 
