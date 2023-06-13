@@ -12,7 +12,7 @@ const createCarSchema = z.object({
   fipePrice: z.number(),
   sellPrice: z.number(),
   description: z.string(),
-  owner: z.lazy(() => userSchema),
+  user: userSchema,
 });
 const carSchema = createCarSchema.extend({
   id: z.number(),

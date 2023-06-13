@@ -49,7 +49,7 @@ class Car {
     }
 
     @ManyToOne( ()=>User, (user)=> user.cars )
-    owner: User
+    user: User
 }
 
 export {

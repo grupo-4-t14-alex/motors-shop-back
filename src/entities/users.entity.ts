@@ -42,7 +42,7 @@ class User{
         }
     }
 
-    @OneToMany(() => Car, (car)=> car.owner )
+    @OneToMany(() => Car, (car)=> car.user )
     cars: Car[]
 }
 
