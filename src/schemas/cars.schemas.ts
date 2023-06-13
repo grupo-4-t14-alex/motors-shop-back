@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { userSchema } from "./users.schemas";
 
 const createCarSchema = z.object({
   // userId: z.number(),
@@ -11,8 +12,8 @@ const createCarSchema = z.object({
   fipePrice: z.number(),
   sellPrice: z.number(),
   description: z.string(),
-})
-
+  user: userSchema,
+});
 const carSchema = createCarSchema.extend({
   id: z.number(),
   isActive: z.boolean().default(true),

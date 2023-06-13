@@ -2,8 +2,10 @@ import {
     BeforeSoftRemove,
     Column, 
     Entity, 
+    ManyToOne, 
     PrimaryGeneratedColumn 
 } from "typeorm";
+import { User } from "./users.entity";
 
 @Entity("cars")
 class Car {
@@ -41,6 +43,13 @@ class Car {
     @Column({ type: "boolean", default: true })
     isActive: boolean
     
+    @BeforeSoftRemove()
+    updateStatus() {
+        this.isActive = false
+    }
+
+    @ManyToOne( ()=>User, (user)=> user.cars )
+    user: User
 }
 
 export {
