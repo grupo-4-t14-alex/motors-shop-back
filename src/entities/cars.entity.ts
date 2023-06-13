@@ -25,8 +25,8 @@ class Car {
     @Column({ type: "int" })
     fuel: number
 
-    @Column({ length: 7 })
-    km: string
+    @Column({ type: "int" })
+    km: number
 
     @Column({ length: 50 })
     color: string

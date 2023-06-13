@@ -1,12 +1,15 @@
 import { Request, Response } from "express";
-import { deleteCarsService } from "../../services";
+import { deleteCarService } from "../../services";
 
-const deleteProductsControllers = async (req: Request, res: Response): Promise<Response> => {
-    const productId: number = parseInt(req.params.id)
-
-    await deleteCarsService(productId)
+const deleteCarController = async (req: Request, res: Response): Promise<Response> => {
+    
+    const carId: number = parseInt(req.params.id)
+    await deleteCarService(carId)
     
     return res.status(204).send()
+
 }
 
-export default deleteProductsControllers
+export {
+    deleteCarController
+} 
