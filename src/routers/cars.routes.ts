@@ -5,12 +5,14 @@ import {
   listCarsController,
   updateCarController,
 } from "../controllers";
+import { ensureDataIsValidMiddleware, ensureIdExistsMiddleware, ensureUserIsAdvertiserMiddleware, validateTokenMiddleware } from "../middlewares";
+import { createCarSchema, updateCarSchema } from "../schemas";
 
 const carRoutes: Router = Router();
 
-carRoutes.post("", createCarController);
-carRoutes.patch("/:id", updateCarController);
-carRoutes.delete("/:id", deleteCarController);
-carRoutes.get("", listCarsController);
+carRoutes.post("", validateTokenMiddleware, ensureUserIsAdvertiserMiddleware, ensureDataIsValidMiddleware(createCarSchema), createCarController)
+carRoutes.get("", listCarsController)
+carRoutes.patch("/:id", validateTokenMiddleware, ensureUserIsAdvertiserMiddleware, ensureIdExistsMiddleware, ensureDataIsValidMiddleware(updateCarSchema), updateCarController)
+carRoutes.delete("/:id", validateTokenMiddleware, ensureUserIsAdvertiserMiddleware, ensureIdExistsMiddleware, deleteCarController)
 
 export { carRoutes };
