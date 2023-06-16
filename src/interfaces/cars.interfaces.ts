@@ -5,4 +5,9 @@ type ICarCreateRequest = z.infer<typeof createCarSchema>;
 type ICar = z.infer<typeof carSchema>;
 type ICarUpdateRequest = z.infer<typeof updateCarSchema>;
 
-export { ICarCreateRequest, ICar, ICarUpdateRequest };
+interface IResultCars {
+  count: number;
+  data: ICar[];
+}
+
+export { ICarCreateRequest, ICar, ICarUpdateRequest, IResultCars };
