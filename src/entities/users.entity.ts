@@ -1,7 +1,7 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Car } from "./cars.entity";
 import { getRounds, hashSync } from "bcryptjs";
-
+import { Address } from "./addresses.entity";
 
 @Entity("user")
 class User{ 
@@ -22,7 +22,7 @@ class User{
     phone: string 
 
     @Column({type:"date"})
-    birthDate: Date
+    birthDate: string
 
     @Column({})
     description: string 
@@ -44,6 +44,10 @@ class User{
 
     @OneToMany(() => Car, (car)=> car.user )
     cars: Car[]
+
+    @OneToOne(() => Address, (address) => address.user_id)
+    address: Address
+
 }
 
 
