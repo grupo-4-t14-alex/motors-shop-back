@@ -14,9 +14,15 @@ const createCarSchema = z.object({
   description: z.string(),
   user: userSchema,
 });
+
 const carSchema = createCarSchema.extend({
   id: z.number(),
   isActive: z.boolean().default(true),
+})
+
+const carImageSchema = z.object({
+  banner: z.array(z.custom<File>()),
+  photos: z.array(z.custom<File>())
 })
 
 const updateCarSchema = carSchema.partial({

@@ -1,11 +1,13 @@
-import { 
+import {
     BeforeSoftRemove,
-    Column, 
-    Entity, 
-    ManyToOne, 
-    PrimaryGeneratedColumn 
+    Column,
+    Entity,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn
 } from "typeorm";
 import { User } from "./users.entity";
+import { Image } from "./images.entity"
 
 @Entity("cars")
 class Car {
@@ -31,10 +33,10 @@ class Car {
     @Column({ length: 50 })
     color: string
 
-    @Column({ type: "int"})
+    @Column({ type: "int" })
     fipePrice: number
 
-    @Column({ type: "int"})
+    @Column({ type: "int" })
     sellPrice: number
 
     @Column({ type: "text" })
@@ -42,14 +44,17 @@ class Car {
 
     @Column({ type: "boolean", default: true })
     isActive: boolean
-    
+
     @BeforeSoftRemove()
     updateStatus() {
         this.isActive = false
     }
 
-    @ManyToOne( ()=>User, (user)=> user.cars )
+    @ManyToOne(() => User, (user) => user.cars)
     user: User
+
+    @OneToMany(() => Image, (image) => image.car)
+    images: Image[]
 }
 
 export {
