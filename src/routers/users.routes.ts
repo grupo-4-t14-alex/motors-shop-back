@@ -6,6 +6,6 @@ import { registerSchema } from "../schemas/users.schemas";
 const userRoutes : Router = Router()
 
 userRoutes.get("", )
-userRoutes.post("/user", ensureDataIsValidMiddleware(registerSchema), ensureEmailIsUniqueMiddleware, createUserController)
+userRoutes.post("", ensureDataIsValidMiddleware(registerSchema), ensureEmailIsUniqueMiddleware, createUserController)
 
 export { userRoutes }
