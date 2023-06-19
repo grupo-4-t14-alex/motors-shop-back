@@ -12,7 +12,7 @@ export const retriveCarsController = async (
 
   console.log(userId);
 
-  const cars: IResultCars = await retriveCarsService(userId, 1);
+  const cars: ICar[] = await retriveCarsService(userId);
 
   return res.status(200).json(cars);
 };
