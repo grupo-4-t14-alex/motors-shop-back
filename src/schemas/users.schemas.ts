@@ -35,13 +35,25 @@ const adressSchema = z.object({
   complement: z.string(),
 })
 
+const updateAdressSchema = adressSchema.partial()
+
 const registerSchema = userSchemaBody.extend({
   address: adressSchema
 })
+
+const updateSchema = userSchemaBody.extend({
+  address: updateAdressSchema
+})
+
+
+const updateUserSchema = updateSchema.omit({
+  cars: true
+}).partial()
+
 
 const userSchemaRequest = userSchemaBody.omit({
   password: true
 })
 
 
-export{ userSchema, userSchemaBody, userSchemaRequest, registerSchema }
+export{ userSchema, userSchemaBody, userSchemaRequest, registerSchema, updateUserSchema ,updateAdressSchema }

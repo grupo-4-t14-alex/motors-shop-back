@@ -3,7 +3,8 @@ import { deleteCarController } from "./cars/deleteCars.controllers";
 import { listCarsController } from "./cars/listCars.controllers";
 import { updateCarController } from "./cars/updateCar.controllers";
 import { loginController } from "./login/login.controller";
-import { createUserController } from "./user/user.controllers"
+import { createUserController, updateUserController } from "./user/user.controllers"
+
 
 
 export {
@@ -12,5 +13,6 @@ export {
   createCarController,
   listCarsController,
   loginController,
-  createUserController
+  createUserController,
+  updateUserController
 }
