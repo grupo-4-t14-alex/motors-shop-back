@@ -15,7 +15,7 @@ class EmailService {
         })
 
         await transport.sendMail({
-            from: process.env.EMAIL,
+            from: process.env.SMTP_USER,
             to,
             subject,
             html: text
