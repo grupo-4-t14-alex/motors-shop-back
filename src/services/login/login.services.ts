@@ -5,10 +5,12 @@ import { AppDataSource } from "../../data-source";
 import { AppError } from "../../errors";
 import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { iLogin } from "../../interfaces/login.interfaces";
+import { userSchemaRequest } from "../../schemas";
 
 export const loginService = async (
   loginRequest: LoginRequest
-): Promise<string> => {
+): Promise<iLogin> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const user: User | null = await userRepository.findOneBy({
@@ -36,5 +38,7 @@ export const loginService = async (
     }
   );
 
-  return token;
+
+
+  return {user: userSchemaRequest.parse(user), token: token };
 };
