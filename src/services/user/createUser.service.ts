@@ -1,7 +1,7 @@
 import { AppDataSource } from "../../data-source"
 import { User } from "../../entities"
 import { Address } from "../../entities/addresses.entity"
-import { iUser, iUserRegister, iUserRequest } from "../../interfaces"
+
 
 
 const createUserService = async (data: any): Promise<any> => {

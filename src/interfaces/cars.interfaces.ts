@@ -10,4 +10,8 @@ interface IResultCars {
   data: ICar[];
 }
 
-export { ICarCreateRequest, ICar, ICarUpdateRequest, IResultCars };
+export { 
+  ICarCreateRequest, 
+  ICar, 
+  ICarUpdateRequest, 
+  IResultCars };

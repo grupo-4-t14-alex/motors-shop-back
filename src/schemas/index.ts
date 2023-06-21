@@ -1,4 +1,16 @@
 import { createCarSchema, carSchema, updateCarSchema } from "./cars.schemas";
-import { userSchema, userSchemaBody, userSchemaRequest, updateUserSchema , updateAdressSchema} from "./users.schemas"
+import { userSchema, createUserSchema, updateUserSchema } from "./users.schemas"
+import { loginSchema } from "./login.schema";
+import { addressSchema, createAddressSchema } from "./addresses.schemas";
 
-export { updateCarSchema, createCarSchema, carSchema, userSchema, userSchemaBody, userSchemaRequest, updateUserSchema, updateAdressSchema };
+export { 
+    updateCarSchema, 
+    createCarSchema, 
+    carSchema, 
+    userSchema, 
+    createUserSchema, 
+    updateUserSchema,
+    createAddressSchema,
+    addressSchema,
+    loginSchema
+}

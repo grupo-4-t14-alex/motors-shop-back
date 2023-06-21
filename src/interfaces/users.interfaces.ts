@@ -1,9 +1,10 @@
 import { z } from "zod";
-import { registerSchema, updateUserSchema, userSchemaBody, userSchemaRequest } from "../schemas/users.schemas"
+import { createUserSchema, userSchema, updateUserSchema } from "../schemas/users.schemas"
 
-type iUser = z.infer<typeof userSchemaBody>
-type iUserRequest = z.infer<typeof userSchemaRequest>
-type iUserRegister = z.infer<typeof registerSchema>
-type IUserUpdate = z.infer<typeof updateUserSchema>
+type IUser = z.infer<typeof userSchema>
+type IUserCreateRequest = z.infer<typeof createUserSchema>
+type IUserUpdateRequest = z.infer<typeof updateUserSchema>
 
-export { iUser, iUserRequest, iUserRegister, IUserUpdate }
+export { 
+    IUser, IUserCreateRequest, IUserUpdateRequest
+}
