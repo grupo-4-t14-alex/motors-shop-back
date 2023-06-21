@@ -1,13 +1,10 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./users.entity";
 
 @Entity("address")
-class Address{
+class Address {
     @PrimaryGeneratedColumn("increment")
     id: number
-
-    @OneToOne(() => User, (user) => user.id)
-    user_id: () => User
 
     @Column({length: 9})
     cep: string
@@ -26,6 +23,10 @@ class Address{
 
     @Column()
     complement: string
+
+    @OneToOne(() => User)
+    @JoinColumn()
+    user: User;
 }
 
 export { Address }

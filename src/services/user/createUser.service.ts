@@ -1,15 +1,19 @@
 import { AppDataSource } from "../../data-source"
 import { User } from "../../entities"
 import { Address } from "../../entities/addresses.entity"
-import { IUser, IUserCreateRequest } from "../../interfaces"
+import { IUserCreateRequest } from "../../interfaces"
+import { IUserReturn } from "../../interfaces/users.interfaces"
+import { userSchemaReturn } from "../../schemas/users.schemas"
 
 
-const createUserService = async (data: IUserCreateRequest): Promise<IUser> => {
+const createUserService = async (data: IUserCreateRequest): Promise<IUserReturn> => {
 
     const userRepository = AppDataSource.getRepository(User)
     const addressRepository = AppDataSource.getRepository(Address)
 
-    const newUserBody = {
+    const addressData = data.address
+
+    const user: User = userRepository.create({
         name: data.name,
         email: data.email,
         cpf: data.cpf,
@@ -18,47 +22,30 @@ const createUserService = async (data: IUserCreateRequest): Promise<IUser> => {
         description: data.description,
         admin: data.admin,
         password: data.password,
-        address: {}
-    }
+    })
 
-    const newAddressBody = {
-        cep: data.address.cep,
-        estate: data.address.estate,
-        city: data.address.city,
-        street: data.address.street,
-        number: data.address.number,
-        complement: data.address.complement
-    }
+    await userRepository.save(user)
 
-    const newUser = userRepository.create(newUserBody)
-    const newAddress = addressRepository.create(newAddressBody)
+    const address: Address = addressRepository.create({
+        ...addressData,
+        user
+    })
 
-    await userRepository.save(newUser)
-    await addressRepository.save(newAddress)
+    await addressRepository.save(address)
 
-    const returnBody = {
-        id: newUser.id,
-        name: data.name,
-        email: data.email,
-        cpf: data.cpf,
-        phone: data.phone,
-        birthDate: data.birthDate,
-        description: data.description,
-        admin: data.admin,
-        password: data.password,
-        cars: [],
+    const userReturn = {
+        ...user,
         address: {
-            cep: data.address.cep,
-            estate: data.address.estate,
-            city: data.address.city,
-            street: data.address.street,
-            number: data.address.number,
-            complement: data.address.complement
+            cep: address.cep,
+            estate: address.estate,
+            city: address.city,
+            street: address.street,
+            number: address.number,
+            complement: address.complement,
         }
-
     }
 
-    return returnBody
+    return userSchemaReturn.parse(userReturn)
 }
 
 export { createUserService }
