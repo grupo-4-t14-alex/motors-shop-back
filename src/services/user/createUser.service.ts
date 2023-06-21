@@ -1,10 +1,10 @@
 import { AppDataSource } from "../../data-source"
 import { User } from "../../entities"
 import { Address } from "../../entities/addresses.entity"
-import { iUser, iUserRegister, iUserRequest } from "../../interfaces"
+import { IUser, IUserCreateRequest } from "../../interfaces"
 
 
-const createUserService = async (data: iUserRegister): Promise<iUserRegister> => {
+const createUserService = async (data: IUserCreateRequest): Promise<IUser> => {
 
     const userRepository = AppDataSource.getRepository(User)
     const addressRepository = AppDataSource.getRepository(Address)
@@ -37,6 +37,7 @@ const createUserService = async (data: iUserRegister): Promise<iUserRegister> =>
     await addressRepository.save(newAddress)
 
     const returnBody = {
+        id: newUser.id,
         name: data.name,
         email: data.email,
         cpf: data.cpf,
@@ -58,7 +59,6 @@ const createUserService = async (data: iUserRegister): Promise<iUserRegister> =>
     }
 
     return returnBody
-    
 }
 
 export { createUserService }
