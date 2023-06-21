@@ -41,5 +41,5 @@ export const loginService = async (
 
 
 
-  return {user: createUserSchema.parse(user), token: token };
+  return { token: token };
 };

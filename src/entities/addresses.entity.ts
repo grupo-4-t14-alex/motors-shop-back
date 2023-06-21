@@ -1,4 +1,4 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./users.entity";
 
 @Entity("address")
@@ -7,7 +7,8 @@ class Address{
     id: number
 
     @OneToOne(() => User, (user) => user.address)
-    user_id: User
+    @JoinColumn()
+    user: User
 
     @Column({length: 9})
     cep: string

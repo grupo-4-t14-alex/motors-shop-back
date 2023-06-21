@@ -14,11 +14,12 @@ const createUserService = async (userData: IUserCreateRequest): Promise<IUser> =
     const newAddress = await addressRepository.save(address)
     
     const userRepository : Repository<User> = AppDataSource.getRepository(User)
-    const newUser  = userRepository.create( { ...userData, address: newAddress  })
+    const newUser  = userRepository.create({...userData, address: newAddress  })
     console.log("teste2")
     console.log(newUser)
     
-    await userRepository.save(newUser)
+    const test = await userRepository.save(newUser)
+    console.log(test)
     console.log("teste3")
 
     // const res = userRepository.createQueryBuilder("user")

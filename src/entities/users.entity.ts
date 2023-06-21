@@ -1,4 +1,4 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Car } from "./cars.entity";
 import { getRounds, hashSync } from "bcryptjs";
 import { Address } from "./addresses.entity";
@@ -45,7 +45,8 @@ class User{
     @OneToMany(() => Car, (car)=> car.user )
     cars: Car[]
 
-    @OneToOne(() => Address, (address) => address.user_id)
+    @OneToOne(() => Address, (address) => address.user)
+    
     address: Address
 
 }
