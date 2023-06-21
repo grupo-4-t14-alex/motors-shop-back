@@ -1,7 +1,6 @@
-import { User } from "../entities";
-import { iUserRequest } from "./users.interfaces";
+import { IUserCreateRequest } from "./users.interfaces";
 
-export interface iLogin {
+export interface ILogin {
     token: string,
-    user: iUserRequest
+    user: IUserCreateRequest
   }

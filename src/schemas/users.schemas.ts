@@ -1,20 +1,8 @@
-import { ZodSchema, z } from "zod";
-import { carSchema } from "./cars.schemas";
+import { z } from "zod"
+import { carSchema } from "./cars.schemas"
+import { createAddressSchema } from "./addresses.schemas";
 
-const userSchema: ZodSchema = z.object({
-  id: z.number().positive(),
-  name: z.string().max(120),
-  email: z.string().max(120),
-  cpf: z.string().length(11),
-  phone: z.string().length(11),
-  birthDate: z.date(),
-  description: z.string(),
-  admin: z.boolean(),
-  password: z.string(),
-  cars: z.array(carSchema),
-});
-
-const userSchemaBody = z.object({
+const createUserSchema = z.object({
   name: z.string().max(120),
   email: z.string().max(120),
   cpf: z.string().length(11),
@@ -23,25 +11,30 @@ const userSchemaBody = z.object({
   description: z.string(),
   admin: z.boolean().default(false),
   password: z.string(),
-  cars: z.array(carSchema).optional()
+  address: createAddressSchema
 })
 
-const adressSchema = z.object({
-  cep: z.string().max(9),
-  estate: z.string().max(50),
-  city: z.string().max(50),
-  street: z.string().max(50),
-  number: z.string().max(7),
-  complement: z.string(),
-})
-
-const registerSchema = userSchemaBody.extend({
-  address: adressSchema
-})
-
-const userSchemaRequest = userSchemaBody.omit({
+const userSchema = createUserSchema.extend({
+  id: z.number().positive(),
+  cars: z.array(carSchema),
+}).omit({
   password: true
 })
 
+const updateUserSchema = createUserSchema.partial({
+  name: true,
+  email: true,
+  cpf: true,
+  phone: true,
+  birthDate: true,
+  description: true,
+  password: true,
+  address: true,
+  //admin: true -> Criar regra para user admin não poder virar não admin
+})
 
-export{ userSchema, userSchemaBody, userSchemaRequest, registerSchema }
+export{ 
+  createUserSchema,                         
+  userSchema,
+  updateUserSchema
+ }
