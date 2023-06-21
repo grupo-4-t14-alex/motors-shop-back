@@ -6,8 +6,8 @@ class Address{
     @PrimaryGeneratedColumn("increment")
     id: number
 
-    @OneToOne(() => User, (user) => user.id)
-    user_id: () => User
+    @OneToOne(() => User, (user) => user.address)
+    user_id: User
 
     @Column({length: 9})
     cep: string

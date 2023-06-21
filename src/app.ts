@@ -1,10 +1,11 @@
 import "express-async-errors";
 import 'dotenv/config';
 import  express, {Application} from "express"
+import cors from "cors"
 import { errorHandler } from "./errors";
 import { carRoutes, loginRoutes, userRoutes } from "./routers";
 import { imagesRoutes } from "./routers/images.routes";
-import cors from "cors"
+
 
 const app : Application = express()
 app.use(cors());
