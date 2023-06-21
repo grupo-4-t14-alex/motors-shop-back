@@ -6,7 +6,7 @@ class Address{
     @PrimaryGeneratedColumn("increment")
     id: number
 
-    @OneToOne(() => User, (user) => user.id)
+    @OneToOne(() => User, (user) => user.address)
     user_id: () => User
 
     @Column({length: 9})
