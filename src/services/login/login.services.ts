@@ -1,12 +1,12 @@
 import { Repository } from "typeorm";
-import { LoginRequest } from "../../schemas/login.schema";
+import { LoginRequest, loginReturnSchema } from "../../schemas/login.schema";
 import { User } from "../../entities";
 import { AppDataSource } from "../../data-source";
 import { AppError } from "../../errors";
 import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ILogin } from "../../interfaces/login.interfaces";
-import { createUserSchema } from "../../schemas";
+import { userSchema } from "../../schemas";
 
 
 export const loginService = async (
@@ -41,5 +41,5 @@ export const loginService = async (
 
 
 
-  return { token: token };
+  return {user: loginReturnSchema.parse(user), token: token };
 };

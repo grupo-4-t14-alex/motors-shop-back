@@ -21,6 +21,10 @@ const userSchema = createUserSchema.extend({
   password: true
 })
 
+const userSchemaReturn = userSchema.omit({
+  cars: true
+})
+
 const updateUserSchema = createUserSchema.partial({
   name: true,
   email: true,
@@ -36,5 +40,6 @@ const updateUserSchema = createUserSchema.partial({
 export{ 
   createUserSchema,                         
   userSchema,
-  updateUserSchema
+  updateUserSchema,
+  userSchemaReturn
  }

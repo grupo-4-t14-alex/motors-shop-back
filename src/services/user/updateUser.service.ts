@@ -8,7 +8,7 @@ import { updateAddressSchema } from "../../schemas"
 
 
 
-const updateUserService = async (userData: IUserUpdateRequest, userId: number): Promise<IUser> => { 
+const updateUserService = async (userData: IUserUpdateRequest, userId: number)=> { 
 
     const userRepository: Repository<User> = AppDataSource.getRepository(User)
     const addressRepository: Repository<Address> = AppDataSource.getRepository(Address)
@@ -26,7 +26,7 @@ const updateUserService = async (userData: IUserUpdateRequest, userId: number): 
 
 
 
-    if(userData.address){
+/*     if(userData.address){
         const address = await addressRepository.findOne({
             where:{
                 id: user.address.id
@@ -48,7 +48,8 @@ const updateUserService = async (userData: IUserUpdateRequest, userId: number): 
     const updatedUser = userRepository.create(user)
     await userRepository.save(updatedUser)
 
-    return updatedUser
+    return updatedUser */
+    return ""
 }
 
 
