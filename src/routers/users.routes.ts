@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createUserController, updateUserController } from "../controllers";
+import { createUserController, updateUserController, deleteUserController } from "../controllers";
 import { ensureDataIsValidMiddleware, ensureEmailIsUniqueMiddleware, validateTokenMiddleware } from "../middlewares";
 import { registerSchema, updateUserSchema } from "../schemas/users.schemas";
 import { resetPasswordController, sendEmailResetPasswordController } from "../controllers/user/resetPassword.controller";
@@ -12,5 +12,5 @@ userRoutes.patch("",validateTokenMiddleware, ensureDataIsValidMiddleware(updateU
 userRoutes.post("/resetPassword", sendEmailResetPasswordController)
 userRoutes.patch("/resetPassword/:token", resetPasswordController)
 
-
+userRoutes.delete("/:id", validateTokenMiddleware, deleteUserController)
 export { userRoutes }
