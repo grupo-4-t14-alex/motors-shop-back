@@ -1,5 +1,17 @@
 import { ICarCreateRequest, ICar, ICarUpdateRequest } from "./cars.interfaces";
-import { iUser, iUserRequest, iUserRegister } from "./users.interfaces"
+import { IUser, IUserCreateRequest, IUserUpdateRequest } from "./users.interfaces"
 import { IEmailRequest } from "./email.interfaces";
+import { IAddressRequest } from "./addresses.interfaces";
+import { ILogin } from "./login.interfaces";
 
-export { ICarCreateRequest, ICarUpdateRequest, ICar, IEmailRequest, iUser, iUserRequest, iUserRegister};
+export { 
+    ICarCreateRequest,
+    ICarUpdateRequest, 
+    ICar, 
+    IEmailRequest, 
+    ILogin,
+    IUser,
+    IUserCreateRequest,
+    IUserUpdateRequest,
+    IAddressRequest
+}
