@@ -1,6 +1,10 @@
-import { IUserCreateRequest } from "./users.interfaces";
+import { z } from "zod";
+import { IUser } from "./users.interfaces";
+import { loginReturnSchema } from "../schemas/login.schema";
 
 export interface ILogin {
     token: string,
-    user: IUserCreateRequest
+    user: ILoginReturn
   }
+
+type ILoginReturn = z.infer<typeof loginReturnSchema>
