@@ -1,21 +1,22 @@
 import { AppDataSource } from "../../data-source"
 import { User } from "../../entities"
 import { Address } from "../../entities/addresses.entity"
+import { IUser, IUserCreateRequest } from "../../interfaces"
 
 
 
-const createUserService = async (data: any): Promise<any> => {
+const createUserService = async (userData: IUserCreateRequest): Promise<IUser> => {
 
-
-    const userRepository = AppDataSource.getRepository(User)
     const addressRepository = AppDataSource.getRepository(Address)
-
-    const addressData = data.address
-
+    const addressData = userData.address
     const address = addressRepository.create(addressData) 
     const newAddress = await addressRepository.save(address)
+    
+    const userRepository = AppDataSource.getRepository(User)
+
+
     console.log("teste1")
-    const newUser  = userRepository.create({ ...data, address: newAddress })
+    const newUser  = userRepository.create({ ...userData, address: newAddress })
     console.log("teste2")
     
     await userRepository.save(newUser)
