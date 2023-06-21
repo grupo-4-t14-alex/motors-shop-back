@@ -13,9 +13,7 @@ const deleteCarService = async (carId: number): Promise<void> => {
 
     if(!findCar) throw new AppError("Car not found!", 404)
 
-    await carsRepository.delete({
-        id: carId
-    })
+    await carsRepository.delete(findCar.id)
 
 }
 

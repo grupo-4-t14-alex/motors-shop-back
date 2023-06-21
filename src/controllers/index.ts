@@ -4,6 +4,7 @@ import { listCarsController } from "./cars/listCars.controllers";
 import { updateCarController } from "./cars/updateCar.controllers";
 import { loginController } from "./login/login.controller";
 import { createUserController } from "./user/user.controllers"
+import { deleteUserController } from "./user/deleteUser.controller";
 
 export {
   updateCarController,
@@ -11,5 +12,6 @@ export {
   createCarController,
   listCarsController,
   loginController,
-  createUserController
+  createUserController,
+  deleteUserController
 }

@@ -1,18 +1,13 @@
 import { Request, Response } from "express";
-import { listCarsService } from "../../services";
 import { ICar } from "../../interfaces";
 import { retriveCarsService } from "../../services/cars/retriveCars.service";
-import { IResultCars } from "../../interfaces/cars.interfaces";
 
-export const retriveCarsController = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  const userId: number = req.user.id;
+export const retriveCarsController = async (req: Request, res: Response): Promise<Response> => {
+  
+  const userId: number = req.user.id
 
-  console.log(userId);
+  const cars: ICar[] = await retriveCarsService(userId)
 
-  const cars: ICar[] = await retriveCarsService(userId);
+  return res.status(200).json(cars)
 
-  return res.status(200).json(cars);
-};
+}
