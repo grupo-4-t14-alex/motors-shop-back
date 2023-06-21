@@ -2,12 +2,13 @@ import { Repository } from "typeorm"
 import { AppDataSource } from "../../data-source"
 import { User } from "../../entities"
 import { Address } from "../../entities/addresses.entity"
-import { IUserUpdate } from "../../interfaces"
+import { IUser, IUserUpdateRequest } from "../../interfaces"
 import { AppError } from "../../errors"
-import { updateAdressSchema } from "../../schemas"
+import { updateAddressSchema } from "../../schemas"
 
 
-const updateUserService = async (data : IUserUpdate, userId : number) : Promise<IUserUpdate> => { 
+
+const updateUserService = async (userData: IUserUpdateRequest, userId: number): Promise<IUser> => { 
 
     const userRepository: Repository<User> = AppDataSource.getRepository(User)
     const addressRepository: Repository<Address> = AppDataSource.getRepository(Address)
@@ -18,17 +19,14 @@ const updateUserService = async (data : IUserUpdate, userId : number) : Promise<
         }
     })
 
-    console.log(user)
 
-
-    
     if(!user){ 
         throw new AppError("User not found", 404) 
     }
 
 
 
-    if(data.address){
+    if(userData.address){
         const address = await addressRepository.findOne({
             where:{
                 id: user.address.id
@@ -36,16 +34,16 @@ const updateUserService = async (data : IUserUpdate, userId : number) : Promise<
         })
         
 
-        const persedDataAddress = updateAdressSchema.parse(data.address)
+        const persedDataAddress = updateAddressSchema.parse(userData.address)
         Object.assign(address!, persedDataAddress)
 
         const addressUpdated = addressRepository.create(address!)
         await addressRepository.save(addressUpdated)
     }
 
-    delete data.address 
+    delete userData.address 
 
-    Object.assign(user, data)
+    Object.assign(user, userData)
 
     const updatedUser = userRepository.create(user)
     await userRepository.save(updatedUser)

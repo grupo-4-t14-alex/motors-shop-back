@@ -1,3 +1,4 @@
+import { Repository } from "typeorm"
 import { AppDataSource } from "../../data-source"
 import { User } from "../../entities"
 import { Address } from "../../entities/addresses.entity"
@@ -7,17 +8,15 @@ import { IUser, IUserCreateRequest } from "../../interfaces"
 
 const createUserService = async (userData: IUserCreateRequest): Promise<IUser> => {
 
-    const addressRepository = AppDataSource.getRepository(Address)
+    const addressRepository : Repository<Address> = AppDataSource.getRepository(Address)
     const addressData = userData.address
     const address = addressRepository.create(addressData) 
     const newAddress = await addressRepository.save(address)
     
-    const userRepository = AppDataSource.getRepository(User)
-
-
-    console.log("teste1")
-    const newUser  = userRepository.create({ ...userData, address: newAddress })
+    const userRepository : Repository<User> = AppDataSource.getRepository(User)
+    const newUser  = userRepository.create( { ...userData, address: newAddress  })
     console.log("teste2")
+    console.log(newUser)
     
     await userRepository.save(newUser)
     console.log("teste3")

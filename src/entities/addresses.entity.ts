@@ -7,7 +7,7 @@ class Address{
     id: number
 
     @OneToOne(() => User, (user) => user.address)
-    user_id: () => User
+    user_id: User
 
     @Column({length: 9})
     cep: string
