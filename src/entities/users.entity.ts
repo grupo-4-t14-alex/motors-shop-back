@@ -1,6 +1,7 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Car } from "./cars.entity";
 import { getRounds, hashSync } from "bcryptjs";
+import { Address } from "./addresses.entity";
 
 @Entity("user")
 class User{ 
@@ -43,6 +44,10 @@ class User{
 
     @OneToMany(() => Car, (car)=> car.user )
     cars: Car[]
+
+    @OneToOne(()=> Address, (address) => address.user)
+    @JoinColumn()
+    address: Address
 }
 
 
