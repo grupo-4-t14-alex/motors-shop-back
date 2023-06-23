@@ -8,7 +8,7 @@ const userRoutes : Router = Router()
 
 userRoutes.get("", )
 userRoutes.post("", ensureDataIsValidMiddleware(createUserSchema), ensureEmailIsUniqueMiddleware, createUserController)
-userRoutes.patch("",validateTokenMiddleware, ensureDataIsValidMiddleware(updateUserSchema), ensureEmailIsUniqueMiddleware, updateUserController)
+userRoutes.patch("",validateTokenMiddleware, ensureDataIsValidMiddleware(updateUserSchema), updateUserController)
 userRoutes.post("/resetPassword", sendEmailResetPasswordController)
 userRoutes.patch("/resetPassword/:token", resetPasswordController)
 

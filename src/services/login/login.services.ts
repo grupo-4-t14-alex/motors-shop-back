@@ -7,6 +7,7 @@ import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ILogin } from "../../interfaces/login.interfaces";
 import { userSchema } from "../../schemas";
+import { userSchemaReturn } from "../../schemas/users.schemas";
 
 
 export const loginService = async (
@@ -14,9 +15,13 @@ export const loginService = async (
 ): Promise<ILogin> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  const user: User | null = await userRepository.findOneBy({
-    email: loginRequest.email,
-  });
+  const user: User | null = await userRepository.findOne({
+    where:{
+      email: loginRequest.email,
+    },
+      relations:["address"]
+  }
+  );
 
   if (!user) throw new AppError("Invalid credentials!", 401);
 
@@ -41,5 +46,5 @@ export const loginService = async (
 
 
 
-  return {user: loginReturnSchema.parse(user), token: token };
+  return {user: userSchemaReturn.parse(user), token: token };
 };
