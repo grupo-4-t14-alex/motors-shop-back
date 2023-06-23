@@ -20,13 +20,11 @@ export const sendEmailResetPassword = async (email: string) => {
 
     if(!user) throw new AppError("User not found!", 404)
 
-    const resetToken: string = jwt.sign({
-        email: user.email,
-        resetToken: true
-    },
-        process.env.SECRET_KEY!,
-    {
-        expiresIn: "1h",
+    const resetToken: string = randomUUID()
+
+    await userRepo.save({
+        ...user, 
+        reset_token: resetToken
     })
     
     const resetPasswordTemplate = emailService.resetPasswordTemplate(user.name, email, resetToken)
@@ -38,28 +36,17 @@ export const sendEmailResetPassword = async (email: string) => {
 export const resetPasswordService = async (token: string, password: string) => {
     const userRepo: Repository<User> = AppDataSource.getRepository(User)
 
-    let resetToken: boolean = false
-    let userEmail = ""
-
-    jwt.verify(token, process.env.SECRET_KEY!, (error, decoded: any) => {
-        if(error) {
-            throw new AppError(error.message, 401)
+    const user: User | null = await userRepo.findOne({
+        where: {
+            reset_token: token
         }
-
-        resetToken = decoded.resetToken
-        userEmail = decoded.email
     })
-
-    const user: User | null = await userRepo.findOne({where: {
-        email: userEmail
-    }})
-
-    if(!resetToken) throw new AppError("Invalid Token!", 401)
 
     if(!user) throw new AppError("User not found!", 404)
 
     await userRepo.save({
         ...user,
-        password: hashSync(password, 10)
+        password: hashSync(password, 10),
+        reset_token: null
     })
 }

@@ -48,6 +48,9 @@ class User{
     @OneToOne(()=> Address, (address) => address.user)
     @JoinColumn()
     address: Address
+
+    @Column({nullable: true, type: 'varchar'})
+    reset_token?: string | undefined | null
 }
 
 
