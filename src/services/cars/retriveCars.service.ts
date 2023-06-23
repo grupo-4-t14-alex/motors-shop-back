@@ -2,9 +2,8 @@ import { Repository } from "typeorm";
 import { Car, User } from "../../entities";
 import { AppDataSource } from "../../data-source";
 import { AppError } from "../../errors";
-import { ICar, IResultCars } from "../../interfaces/cars.interfaces";
 
-export const retriveCarsService = async (userId: number): Promise<ICar[]> => {
+export const retriveCarsService = async (userId: number): Promise<any> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
   const carsRepository: Repository<Car> = AppDataSource.getRepository(Car)
 
@@ -13,15 +12,6 @@ export const retriveCarsService = async (userId: number): Promise<ICar[]> => {
   if (!user) {
     throw new AppError("User not exists", 404);
   }
-
-  /* const cars = await userRepository.find({
-    where: {
-      id: userId
-    },
-    relations: {
-      cars: true
-    }
-  }) */
 
   const cars: Car[] = await carsRepository.createQueryBuilder("cars")
   .leftJoinAndSelect("cars.user", "user", `user.id = ${userId}`)
@@ -32,7 +22,6 @@ export const retriveCarsService = async (userId: number): Promise<ICar[]> => {
   .addSelect("user.admin", "admin")
   .addSelect("user.email", "email")
   .getMany()
-
 
   return cars;
 };
