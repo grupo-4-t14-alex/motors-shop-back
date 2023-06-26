@@ -56,8 +56,9 @@ const updateUserService = async (userData: IUserUpdateRequest, userId: number)=>
         const addressUpdated = addressRepository.create(address!)
         await addressRepository.save(addressUpdated)
     }
-    const updatedUser = {...user, userData }
-    await userRepository.save(updatedUser)
+    Object.assign(user, userData)
+    const updatedUser = {...user, ...userData }
+    await userRepository.save(user)
     
     return  userSchemaReturn.parse(updatedUser)
 
