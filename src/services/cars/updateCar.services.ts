@@ -23,7 +23,7 @@ const updateCarService = async (CarId: number, carData:any)=> {
     ...carData
   });
 
-  await carsRepo.save(car);
+  await carsRepo.save(UpdatedCar);
 
   return UpdatedCar;
 };
