@@ -1,5 +1,5 @@
-import { z } from "zod"
-import { carSchema } from "./cars.schemas"
+import { z } from "zod";
+import { carSchema } from "./cars.schemas";
 import { createAddressSchema } from "./addresses.schemas";
 
 const createUserSchema = z.object({
@@ -11,36 +11,35 @@ const createUserSchema = z.object({
   description: z.string(),
   admin: z.boolean().default(false),
   password: z.string(),
-  address: createAddressSchema.nullable()
-})
+  address: createAddressSchema,
+});
 
-const userSchema = createUserSchema.extend({
-  id: z.number().positive(),
-  cars: z.array(carSchema),
-}).omit({
-  password: true
-})
+const userSchema = createUserSchema
+  .extend({
+    id: z.number().positive(),
+    cars: z.array(carSchema),
+  })
+  .omit({
+    password: true,
+  });
 
 const userSchemaReturn = userSchema.omit({
-  cars: true
-})
+  cars: true,
+});
 
-const updateUserSchema = createUserSchema.partial({
-  name: true,
-  email: true,
-  cpf: true,
-  phone: true,
-  birthDate: true,
-  description: true,
-  //password: true,
-  address: true,
-  admin: true,
-  //  -> Criar regra para user admin não poder virar não admin
-}).omit({password:true})
+const updateUserSchema = createUserSchema
+  .partial({
+    name: true,
+    email: true,
+    cpf: true,
+    phone: true,
+    birthDate: true,
+    description: true,
+    //password: true,
+    address: true,
+    admin: true,
+    //  -> Criar regra para user admin não poder virar não admin
+  })
+  .omit({ password: true });
 
-export{ 
-  createUserSchema,
-  userSchema,
-  updateUserSchema,
-  userSchemaReturn
- }
+export { createUserSchema, userSchema, updateUserSchema, userSchemaReturn };
