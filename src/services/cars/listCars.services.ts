@@ -24,5 +24,4 @@ export const listCarsService = async (): Promise<ICar[]> => {
     .getMany();
 
     return findCars
-
 }
