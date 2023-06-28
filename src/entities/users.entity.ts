@@ -45,7 +45,7 @@ class User{
 
     @OneToMany(() => Car, (car)=> car.user )
     cars: Car[]
-
+    
     @OneToOne(()=> Address, (address) => address.user)
     @JoinColumn()
     address: Address
@@ -55,6 +55,7 @@ class User{
 
     @OneToMany(() => Comment, (comment) => comment.user_id)
     comment: Comment[]
+
 }
 
 

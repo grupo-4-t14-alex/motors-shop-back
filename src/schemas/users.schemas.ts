@@ -34,7 +34,7 @@ const updateUserSchema = createUserSchema.partial({
   description: true,
   //password: true,
   address: true,
-  //admin: true -> Criar regra para user admin não poder virar não admin
+  admin: true,
 }).omit({password:true})
 
 export{ 
