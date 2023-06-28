@@ -57,6 +57,9 @@ const updateUserService = async (userData: IUserUpdateRequest, userId: number)=>
         await addressRepository.save(addressUpdated)
     }
 
+    // const updatedUser = userRepository.create( {...user, ...userData} 
+    //Object.assign(user, userData)
+
     userRepository.merge(user, userData as DeepPartial<User>);
     
     await userRepository.save(user)
