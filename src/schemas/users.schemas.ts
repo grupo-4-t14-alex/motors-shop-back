@@ -11,7 +11,7 @@ const createUserSchema = z.object({
   description: z.string(),
   admin: z.boolean().default(false),
   password: z.string(),
-  address: createAddressSchema
+  address: createAddressSchema.nullable()
 })
 
 const userSchema = createUserSchema.extend({
