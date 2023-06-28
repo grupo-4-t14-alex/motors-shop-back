@@ -1,4 +1,4 @@
-import { Repository } from "typeorm"
+import { DeepPartial, Repository } from "typeorm"
 import { AppDataSource } from "../../data-source"
 import { User } from "../../entities"
 import { Address } from "../../entities/addresses.entity"
@@ -56,10 +56,14 @@ const updateUserService = async (userData: IUserUpdateRequest, userId: number)=>
         const addressUpdated = addressRepository.create(address!)
         await addressRepository.save(addressUpdated)
     }
-    const updatedUser = {...user, userData }
-    await userRepository.save(updatedUser)
+
+    // const updatedUser = userRepository.create( {...user, ...userData} 
+    //Object.assign(user, userData)
+
+    userRepository.merge(user, userData as DeepPartial<User>);
     
-    return  userSchemaReturn.parse(updatedUser)
+    await userRepository.save(user)
+    return  userSchemaReturn.parse(user)
 
 }
 
