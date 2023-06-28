@@ -2,7 +2,6 @@ import { DeepPartial, Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Car } from "../../entities";
 import { AppError } from "../../errors";
-import { ICar, ICarUpdateRequest } from "../../interfaces/cars.interfaces";
 
 const updateCarService = async (CarId: number, carData:any)=> {
 

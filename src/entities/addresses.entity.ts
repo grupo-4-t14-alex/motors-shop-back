@@ -24,8 +24,8 @@ class Address {
     @Column()
     complement: string
 
-    @OneToOne(() => User)
-    @JoinColumn()
+    @OneToOne(() => User, (user)=> user.address)
+
     user: User;
 }
 

@@ -4,6 +4,7 @@ import {IUser, IUserCreateRequest, IUserUpdateRequest,  } from "./users.interfac
 import { IEmailRequest } from "./email.interfaces";
 import { IAddressRequest } from "./addresses.interfaces";
 import { ILogin } from "./login.interfaces";
+import { iComment, iCommentReturn } from "./comments.interfaces"
 
 export { 
     ICarCreateRequest,
@@ -14,5 +15,7 @@ export {
     IUser,
     IUserCreateRequest,
     IUserUpdateRequest,
-    IAddressRequest
+    IAddressRequest,
+    iComment,
+    iCommentReturn
 }
