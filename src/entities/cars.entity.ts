@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { User } from "./users.entity";
 import { Image } from "./images.entity"
+import { Comment } from "./comments.entity";
 
 @Entity("cars")
 class Car {
@@ -55,6 +56,9 @@ class Car {
 
     @OneToMany(() => Image, (image) => image.car)
     images: Image[]
+
+    @OneToMany(() => Comment, (comment) => comment.car_id)
+    comments: Comment[]
 }
 
 export {

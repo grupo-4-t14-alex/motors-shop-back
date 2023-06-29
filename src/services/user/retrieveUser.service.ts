@@ -3,8 +3,6 @@ import { User } from "../../entities"
 import { AppDataSource } from "../../data-source"
 import { AppError } from "../../errors"
 import { userSchema } from "../../schemas"
-import { IUser } from "../../interfaces"
-import { userSchemaReturn } from "../../schemas/users.schemas"
 
 export const retrieveUserService = async (userId: number): Promise<any> => {
     const userRepo: Repository<User> = AppDataSource.getRepository(User)

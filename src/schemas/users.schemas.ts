@@ -11,7 +11,7 @@ const createUserSchema = z.object({
   description: z.string(),
   admin: z.boolean().default(false),
   password: z.string(),
-  address: createAddressSchema.nullable()
+  address: createAddressSchema
 })
 
 const userSchema = createUserSchema.extend({
@@ -35,7 +35,6 @@ const updateUserSchema = createUserSchema.partial({
   //password: true,
   address: true,
   admin: true,
-  //  -> Criar regra para user admin não poder virar não admin
 }).omit({password:true})
 
 export{ 

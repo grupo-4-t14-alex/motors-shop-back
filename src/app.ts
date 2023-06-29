@@ -5,6 +5,7 @@ import cors from "cors"
 import { errorHandler } from "./errors";
 import { carRoutes, loginRoutes, userRoutes } from "./routers";
 import { imagesRoutes } from "./routers/images.routes";
+import { commentRoutes } from "./routers/comments.routes";
 
 
 const app : Application = express()
@@ -16,6 +17,7 @@ app.use("/users", userRoutes)
 app.use("/cars", carRoutes)
 app.use("/login", loginRoutes)
 app.use("/import", imagesRoutes)
+app.use("/comments", commentRoutes)
 
 app.use(errorHandler)
 export default app

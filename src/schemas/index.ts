@@ -2,6 +2,7 @@ import { createCarSchema, carSchema, updateCarSchema } from "./cars.schemas";
 import { userSchema, createUserSchema, updateUserSchema } from "./users.schemas"
 import { loginSchema } from "./login.schema";
 import { addressSchema, createAddressSchema, updateAddressSchema } from "./addresses.schemas";
+import { createCommentSchema, commentSchemaReturn } from "./comments.schema"
 
 export { 
     updateCarSchema, 
@@ -13,5 +14,7 @@ export {
     createAddressSchema,
     addressSchema,
     loginSchema,
-    updateAddressSchema
+    updateAddressSchema,
+    createCommentSchema,
+    commentSchemaReturn
 }
