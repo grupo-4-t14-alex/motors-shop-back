@@ -5,7 +5,8 @@ const createCommentSchema = z.object({
 })
 
 const commentSchemaReturn = createCommentSchema.extend({
-    id: z.string()
+    id: z.string(),
+    createdAt: z.string()
 })
 
 export {
