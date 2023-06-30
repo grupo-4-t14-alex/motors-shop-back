@@ -247,8 +247,8 @@ swaggerRoutes.get("/cars", listCarsController);
  *     responses:
  *       200:
  *         description: Car retrieved successfully
- *        401:
- *         description: Unauthorized access
+*        401:
+*         description: Unauthorized access
  *       404:
  *         description: Car not found
  *       500:
@@ -375,8 +375,8 @@ swaggerRoutes.post("/comments/:userId/:carId", validateTokenMiddleware, ensureDa
  *     responses:
  *       200:
  *         description: Comments retrieved successfully
- *        500:
- *         description: Internal server error
+*        500:
+*         description: Internal server error
  */
 swaggerRoutes.get("/comments", listCommentsController);
 
