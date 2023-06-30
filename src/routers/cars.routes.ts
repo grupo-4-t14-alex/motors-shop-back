@@ -13,6 +13,7 @@ import {
 } from "../middlewares";
 import { createCarSchema, updateCarSchema } from "../schemas";
 import { retriveCarsController } from "../controllers/cars/retriveCars.controller";
+import { listCommentsByIdController } from "../controllers/comments/listCommentsById.controllers";
 
 const carRoutes: Router = Router();
 
@@ -40,5 +41,7 @@ carRoutes.delete(
   deleteCarController
 );
 carRoutes.get("/:id", validateTokenMiddleware, retriveCarsController);
+
+carRoutes.get("/:carId/comments", listCommentsByIdController);
 
 export { carRoutes };
