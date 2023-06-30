@@ -178,6 +178,7 @@ swaggerRoutes.post("/users/resetPassword", resetPasswordController);
  */
 swaggerRoutes.patch("/users/resetPassword/:token", resetPasswordController);
 
+
 // -------------------------------- CARS --------------------------------
 
 /**
@@ -439,6 +440,7 @@ swaggerRoutes.post("/images/:carId", files, createImagesControllers);
  *   name: Authentication
  *   description: API endpoints for user authentication
  */
+
 /**
  * @swagger
  * /login:
