@@ -17,7 +17,7 @@ class Comment {
     @Column()
     comment: string
 
-    @CreateDateColumn({ type: 'date'})
+    @CreateDateColumn({ type: 'timestamp'})
     createdAt: string;
 }
 

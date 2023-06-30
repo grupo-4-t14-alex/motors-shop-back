@@ -12,7 +12,8 @@ const createCommentController = async (request: Request, response: Response): Pr
 
     const bodyReturn = {
         id: newComment.id,
-        comment: commentData.comment
+        comment: commentData.comment,
+        createdAt: commentData.created
     }
 
     return response.status(201).json(bodyReturn)
