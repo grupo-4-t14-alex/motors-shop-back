@@ -1,18 +1,14 @@
 import { Repository } from "typeorm";
-import { LoginRequest, loginReturnSchema } from "../../schemas/login.schema";
 import { User } from "../../entities";
+import { ILogin, ILoginRequest } from "../../interfaces";
+import { userSchemaReturn } from "../../schemas";
 import { AppDataSource } from "../../data-source";
 import { AppError } from "../../errors";
 import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { ILogin } from "../../interfaces/login.interfaces";
-import { userSchema } from "../../schemas";
-import { userSchemaReturn } from "../../schemas/users.schemas";
 
 
-export const loginService = async (
-  loginRequest: LoginRequest
-): Promise<ILogin> => {
+export const loginService = async (loginRequest: ILoginRequest): Promise<ILogin> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const user: User | null = await userRepository.findOne({
