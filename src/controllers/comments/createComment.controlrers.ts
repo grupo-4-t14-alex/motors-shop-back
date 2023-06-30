@@ -5,7 +5,7 @@ import { createCommentService } from "../../services";
 const createCommentController = async (request: Request, response: Response): Promise<Response> => {
     
     const commentData = request.body
-    const userId = Number(request.params.userId)
+    const userId = Number(request.user.id)
     const carId = Number(request.params.carId)
 
     const newComment = await createCommentService(commentData, userId, carId)

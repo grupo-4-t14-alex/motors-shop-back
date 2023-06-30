@@ -141,7 +141,7 @@ swaggerRoutes.patch("/users", validateTokenMiddleware, updateUserController);
  *       500:
  *         description: Internal server error
  */
-swaggerRoutes.post("/users/resetPassword", sendEmailResetPasswordController);
+swaggerRoutes.post("/users/resetPassword", resetPasswordController);
 
 /**
  * @swagger
