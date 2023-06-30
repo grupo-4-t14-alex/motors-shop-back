@@ -1,4 +1,4 @@
-# MotorShop Front-End
+# MotorShop Back-End
 
 ## About
 This is the back-end application for a platform where users can advertise cars for sale. The application provides a user-friendly interface for browsing and viewing car details, applying filters, and engaging in discussions through comments. 
@@ -53,12 +53,15 @@ Or you can open the deploy link and visit the page online here: **"INSERIR LINK"
 | GET | List All Ads | `/api/cars` | Admin | Authentication |
 | PATCH | Update Car Ad | `/api/cars/carId` | Admin | Authentication |
 | DELETE | Delete Car Ad | `/api/cars/carId` | Admin | Authentication |
+| GET | List Ad's Comments | `/api/cars/carId/comments` | Admin and NotAdmin | No Authentication |
 | --- | --- | --- | --- | --- |
 | POST | Create Images | `/api/import/carId` | Admin | Authentication |
+| --- | --- | --- | --- | --- |
+| POST | Create Comment | `/api/comments/carId` | Admin and NotAdmin | Authentication | >>>>Corrigir rota
 
 
 ## Documentation
-Check the Swagger documentation here: **"INSERIR LINK"**
+Check the Swagger documentation **[here](http://localhost:3000/api-docs/#/)**
 
 
 
