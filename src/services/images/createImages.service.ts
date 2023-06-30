@@ -1,5 +1,5 @@
 import { Repository } from "typeorm"
-import { Image } from "../../entities/images.entity"
+import { Image } from "../../entities"
 import { AppDataSource } from "../../data-source"
 import { v2 as cloudinary } from "cloudinary";
 import { unlink } from "fs";

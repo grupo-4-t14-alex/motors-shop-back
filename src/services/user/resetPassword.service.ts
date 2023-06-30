@@ -8,8 +8,7 @@ import { emailService } from "../../utils/emailService.utils"
 import { hashSync } from "bcryptjs"
 
 
-
-export const sendEmailResetPassword = async (email: string) => {
+export const sendEmailResetPasswordService = async (email: string) => {
     const userRepo: Repository<User> = AppDataSource.getRepository(User)
 
     const user: User | null = await userRepo.findOne({

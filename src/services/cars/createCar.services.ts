@@ -2,7 +2,6 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Car, User } from "../../entities";
 import { ICar, ICarCreateRequest } from "../../interfaces";
-import { error } from "console";
 import { Image } from "../../entities/images.entity";
 import { AppError } from "../../errors";
 

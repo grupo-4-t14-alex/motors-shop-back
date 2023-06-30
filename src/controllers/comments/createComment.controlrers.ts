@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createCommentService } from "../../services/comments/createComment.service";
+import { createCommentService } from "../../services";
 
 
 const createCommentController = async (request: Request, response: Response): Promise<Response> => {

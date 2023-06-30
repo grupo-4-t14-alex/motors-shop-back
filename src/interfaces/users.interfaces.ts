@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createUserSchema, userSchema, updateUserSchema, userSchemaReturn } from "../schemas/users.schemas"
+import { createUserSchema, userSchema, updateUserSchema, userSchemaReturn } from "../schemas"
 
 type IUser = z.infer<typeof userSchema>
 type IUserReturn = z.infer<typeof userSchemaReturn>

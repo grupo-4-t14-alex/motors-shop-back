@@ -1,7 +1,6 @@
 import { AppDataSource } from "./data-source";
 import app from "./app"
 
-
 AppDataSource.initialize()
   .then(async () => {
     console.log("Database connected.")
