@@ -1,12 +1,9 @@
 import { DeepPartial, Repository } from "typeorm"
 import { AppDataSource } from "../../data-source"
-import { User } from "../../entities"
-import { Address } from "../../entities/addresses.entity"
+import { User, Address } from "../../entities"
 import { IUserUpdateRequest } from "../../interfaces"
 import { AppError } from "../../errors"
-import { updateAddressSchema } from "../../schemas"
-import { userSchemaReturn } from "../../schemas/users.schemas"
-
+import { updateAddressSchema, userSchemaReturn } from "../../schemas"
 
 
 const updateUserService = async (userData: IUserUpdateRequest, userId: number)=> { 

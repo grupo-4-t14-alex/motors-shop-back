@@ -1,10 +1,10 @@
 import { Request, Response } from "express"
-import { resetPasswordService, sendEmailResetPassword } from "../../services/user/resetPassword.service"
+import { resetPasswordService, sendEmailResetPasswordService } from "../../services"
 
 export const sendEmailResetPasswordController = async (req: Request, res: Response): Promise<Response> => {
     const { email } = req.body
 
-    await sendEmailResetPassword(email)
+    await sendEmailResetPasswordService(email)
 
     return res.json({message: "Email sent!"})
 }

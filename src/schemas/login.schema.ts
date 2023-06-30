@@ -14,4 +14,3 @@ export const loginReturnSchema = userSchema.extend({
     cars: true
 })
 
-export type LoginRequest = z.infer<typeof loginSchema>

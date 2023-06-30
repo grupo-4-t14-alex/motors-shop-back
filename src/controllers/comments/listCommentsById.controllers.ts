@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { listCommentsByIdService } from "../../services/comments/listCommentById.service";
+import { listCommentsByIdService } from "../../services";
 
 const listCommentsByIdController = async (request: Request, response: Response): Promise<Response> => {
 

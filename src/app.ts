@@ -3,9 +3,12 @@ import 'dotenv/config';
 import  express, {Application} from "express"
 import cors from "cors"
 import { errorHandler } from "./errors";
-import { carRoutes, loginRoutes, userRoutes } from "./routers";
-import { imagesRoutes } from "./routers/images.routes";
-import { commentRoutes } from "./routers/comments.routes";
+import {     
+    carRoutes,
+    commentRoutes,
+    imagesRoutes,
+    loginRoutes,
+    userRoutes, } from "./routers";
 
 import swaggerUi from "swagger-ui-express";
 import { specs } from "./swaggerConfig";

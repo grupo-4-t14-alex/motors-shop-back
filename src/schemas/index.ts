@@ -1,20 +1,23 @@
-import { createCarSchema, carSchema, updateCarSchema } from "./cars.schemas";
-import { userSchema, createUserSchema, updateUserSchema } from "./users.schemas"
-import { loginSchema } from "./login.schema";
 import { addressSchema, createAddressSchema, updateAddressSchema } from "./addresses.schemas";
+import { createCarSchema, carSchema, carImageSchema, updateCarSchema } from "./cars.schemas";
 import { createCommentSchema, commentSchemaReturn } from "./comments.schema"
+import { loginSchema, loginReturnSchema } from "./login.schema";
+import { userSchema, createUserSchema, updateUserSchema, userSchemaReturn } from "./users.schemas"
 
 export { 
-    updateCarSchema, 
+    addressSchema, 
+    createAddressSchema, 
+    updateAddressSchema,
     createCarSchema, 
     carSchema, 
+    carImageSchema, 
+    updateCarSchema,
+    createCommentSchema, 
+    commentSchemaReturn,
+    loginSchema, 
+    loginReturnSchema,
     userSchema, 
-    createUserSchema,
-    updateUserSchema,
-    createAddressSchema,
-    addressSchema,
-    loginSchema,
-    updateAddressSchema,
-    createCommentSchema,
-    commentSchemaReturn
+    createUserSchema, 
+    updateUserSchema, 
+    userSchemaReturn
 }

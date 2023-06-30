@@ -1,15 +1,5 @@
-// import { Request, Response } from "express";
-// import { listCommentService } from "../../services/comments/listComments.service";
-
-// const listCommentsController = async (_request: Request, response: Response): Promise<Response> => {
-//   const comments = await listCommentService();
-//   return response.status(200).json(comments);
-// };
-
-// export { listCommentsController };
-
 import { Request, Response } from "express";
-import { listCommentService } from "../../services/comments/listComments.service";
+import { listCommentService } from "../../services";
 
 const listCommentsController = async (_request: Request, response: Response): Promise<Response> => {
   

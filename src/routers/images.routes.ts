@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from "multer";
-import { createImagesControllers } from "../controllers/images/createImages.controllers";
+import { createImagesControllers } from "../controllers";
 
 export const imagesRoutes: Router = Router()
 

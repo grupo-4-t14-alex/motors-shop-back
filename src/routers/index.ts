@@ -1,9 +1,15 @@
-import{ carRoutes }from "./cars.routes";
-import { userRoutes }from "./users.routes";
+import { carRoutes }from "./cars.routes";
+import { commentRoutes } from "./comments.routes";
+import { imagesRoutes } from "./images.routes";
 import { loginRoutes } from "./login.routes";
+import { swaggerRoutes } from "./swagger.routes";
+import { userRoutes }from "./users.routes";
 
 export {
-    userRoutes,
     carRoutes,
-    loginRoutes
+    commentRoutes,
+    imagesRoutes,
+    loginRoutes,
+    swaggerRoutes,
+    userRoutes,
 }

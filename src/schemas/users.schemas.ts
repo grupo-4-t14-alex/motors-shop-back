@@ -35,10 +35,8 @@ const updateUserSchema = createUserSchema
     phone: true,
     birthDate: true,
     description: true,
-    //password: true,
     address: true,
     admin: true,
-    //  -> Criar regra para user admin não poder virar não admin
   })
   .omit({ password: true });
 

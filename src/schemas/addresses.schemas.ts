@@ -14,11 +14,10 @@ const createAddressSchema = addressSchema.omit({
     id: true
 })
 
-
 const updateAddressSchema = createAddressSchema.partial()
 
 export {
-    updateAddressSchema,
+    addressSchema,
     createAddressSchema,
-    addressSchema
+    updateAddressSchema,
 }

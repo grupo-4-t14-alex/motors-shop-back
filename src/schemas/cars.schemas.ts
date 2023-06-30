@@ -1,8 +1,6 @@
 import { z } from "zod";
-import { userSchema } from "./users.schemas";
 
 const createCarSchema = z.object({
-  // userId: z.number(),
   brand: z.string().max(50),
   model: z.string().max(120),
   year: z.number(),
@@ -12,20 +10,12 @@ const createCarSchema = z.object({
   fipePrice: z.number(),
   sellPrice: z.number(),
   description: z.string(),
-  // user: z.number(),
 });
 
 const carSchema = createCarSchema.extend({
   id: z.number(),
   isActive: z.boolean().default(true),
 });
-
-const carSchemaArray = createCarSchema
-  .extend({
-    id: z.number(),
-    isActive: z.boolean().default(true),
-  })
-  .array();
 
 const carImageSchema = z.object({
   banner: z.array(z.custom<File>()),
@@ -49,4 +39,4 @@ const updateCarSchema = carSchema
     id: true,
   });
 
-export { createCarSchema, carSchema, updateCarSchema, carSchemaArray };
+export { createCarSchema, carSchema, carImageSchema, updateCarSchema };

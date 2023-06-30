@@ -1,9 +1,15 @@
 import { Router } from "express";
-import { createUserController, updateUserController, deleteUserController } from "../controllers";
-import { ensureDataIsValidMiddleware, ensureEmailIsUniqueMiddleware, validateTokenMiddleware } from "../middlewares";
-import { createUserSchema, updateUserSchema } from "../schemas/users.schemas";
-import { resetPasswordController, sendEmailResetPasswordController } from "../controllers/user/resetPassword.controller";
-import { retrieveUserController } from "../controllers/user/retrieveUser.controller";
+import { createUserController,
+    deleteUserController,
+    resetPasswordController,
+    retrieveUserController,
+    updateUserController,
+    sendEmailResetPasswordController } from "../controllers";
+import { 
+    ensureDataIsValidMiddleware, 
+    ensureEmailIsUniqueMiddleware, 
+    validateTokenMiddleware } from "../middlewares";
+import { createUserSchema, updateUserSchema } from "../schemas";
 
 const userRoutes : Router = Router()
 

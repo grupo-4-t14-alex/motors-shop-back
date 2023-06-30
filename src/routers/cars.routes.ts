@@ -4,6 +4,8 @@ import {
   deleteCarController,
   listCarsController,
   updateCarController,
+  retriveCarsController,
+  listCommentsByIdController
 } from "../controllers";
 import {
   ensureDataIsValidMiddleware,
@@ -12,8 +14,6 @@ import {
   validateTokenMiddleware,
 } from "../middlewares";
 import { createCarSchema, updateCarSchema } from "../schemas";
-import { retriveCarsController } from "../controllers/cars/retriveCars.controller";
-import { listCommentsByIdController } from "../controllers/comments/listCommentsById.controllers";
 
 const carRoutes: Router = Router();
 
@@ -24,7 +24,9 @@ carRoutes.post(
   ensureDataIsValidMiddleware(createCarSchema),
   createCarController
 );
+
 carRoutes.get("", listCarsController);
+
 carRoutes.patch(
   "/:id",
   validateTokenMiddleware,
@@ -33,6 +35,7 @@ carRoutes.patch(
   ensureDataIsValidMiddleware(updateCarSchema),
   updateCarController
 );
+
 carRoutes.delete(
   "/:id",
   validateTokenMiddleware,
@@ -40,6 +43,7 @@ carRoutes.delete(
   ensureIdExistsMiddleware,
   deleteCarController
 );
+
 carRoutes.get("/:id", validateTokenMiddleware, retriveCarsController);
 
 carRoutes.get("/:carId/comments", listCommentsByIdController);

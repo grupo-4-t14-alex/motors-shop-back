@@ -1,11 +1,7 @@
 import { AppDataSource } from "../../data-source"
-import { User } from "../../entities"
-import { Address } from "../../entities/addresses.entity"
-import { IUserCreateRequest } from "../../interfaces"
-import { IUserReturn } from "../../interfaces/users.interfaces"
-import { userSchemaReturn } from "../../schemas/users.schemas"
-
-
+import { User, Address } from "../../entities"
+import { IUserCreateRequest, IUserReturn } from "../../interfaces"
+import { userSchemaReturn } from "../../schemas"
 
 const createUserService = async (data: IUserCreateRequest) : Promise<IUserReturn> => {
 

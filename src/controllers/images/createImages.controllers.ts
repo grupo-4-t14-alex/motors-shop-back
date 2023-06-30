@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createImagesService } from "../../services/images/createImages.service";
+import { createImagesService } from "../../services";
 
 export const createImagesControllers = async (req: Request, res: Response): Promise<Response> => {
     const files: any = req.files

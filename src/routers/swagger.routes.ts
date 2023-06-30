@@ -1,13 +1,34 @@
 import { Router } from "express";
-import { createCarController, createUserController, deleteCarController, listCarsController, loginController, updateCarController, updateUserController } from "../controllers";
-import { retrieveUserController } from "../controllers/user/retrieveUser.controller";
-import { ensureDataIsValidMiddleware, ensureIdExistsMiddleware, ensureUserIsAdvertiserMiddleware, validateTokenMiddleware } from "../middlewares";
-import { resetPasswordController, sendEmailResetPasswordController } from "../controllers/user/resetPassword.controller";
-import { retriveCarsController } from "../controllers/cars/retriveCars.controller";
-import { createCarSchema, createCommentSchema, updateCarSchema } from "../schemas";
-import { createCommentController } from "../controllers/comments/createComment.controlrers";
-import { listCommentsController } from "../controllers/comments/listComments.controllers";
-import { createImagesControllers } from "../controllers/images/createImages.controllers";
+import { 
+    createCarController,
+    deleteCarController,
+    listCarsController,
+    retriveCarsController,
+    updateCarController,
+    createCommentController,
+    listCommentsController,
+    listCommentsByIdController,
+    createImagesControllers,
+    loginController,
+    createUserController,
+    deleteUserController,
+    resetPasswordController,
+    retrieveUserController,
+    updateUserController
+} from "../controllers";
+
+import { 
+    ensureDataIsValidMiddleware, 
+    ensureIdExistsMiddleware, 
+    ensureUserIsAdvertiserMiddleware, 
+    validateTokenMiddleware 
+} from "../middlewares";
+
+import { 
+    createCarSchema,
+    createCommentSchema, 
+    updateCarSchema } from "../schemas";
+    
 import { files } from "./images.routes";
 
 export const swaggerRoutes: Router = Router();

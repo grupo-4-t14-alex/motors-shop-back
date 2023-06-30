@@ -1,6 +1,5 @@
 import { Router } from "express";
-import { createCommentController } from "../controllers/comments/createComment.controlrers";
-import { listCommentsController } from "../controllers/comments/listComments.controllers";
+import { createCommentController, listCommentsController  } from "../controllers";
 import { ensureDataIsValidMiddleware, validateTokenMiddleware } from "../middlewares";
 import { createCommentSchema } from "../schemas";
 
