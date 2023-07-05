@@ -15,6 +15,7 @@ export const listCarsService = async (): Promise<ICar[]> => {
     .addSelect("user.phone", "phone")
     .addSelect("user.birthDate", "birthDate")
     .addSelect("user.admin", "admin")
+    .leftJoinAndSelect("cars.images", "images")
     .getMany();
 
     return findCars
