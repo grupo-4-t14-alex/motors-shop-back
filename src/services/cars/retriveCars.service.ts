@@ -18,7 +18,8 @@ export const retriveCarsService = async (userId: number): Promise<any> => {
     .leftJoinAndSelect("cars.user", "user")
     .where("user.id = :userId", { userId })
     .select(["cars", "user.id", "user.description", "user.name"])
+    .leftJoinAndSelect("cars.images", "images")
     .getMany();
-
+    
   return cars;
 };
