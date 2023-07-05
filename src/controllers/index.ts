@@ -5,8 +5,10 @@ import { retriveCarsController } from "./cars/retriveCars.controller";
 import { updateCarController } from "./cars/updateCar.controllers";
 
 import { createCommentController } from "./comments/createComment.controlrers";
+import { deleteCommentController } from "./comments/deleteComment.controllers";
 import { listCommentsController } from "./comments/listComments.controllers";
 import { listCommentsByIdController } from "./comments/listCommentsById.controllers";
+import { updateCommentController } from "./comments/updateComment.controllers";
 
 import { createImagesControllers } from "./images/createImages.controllers";
 
@@ -27,6 +29,8 @@ export {
   createCommentController,
   listCommentsController,
   listCommentsByIdController,
+  updateCommentController,
+  deleteCommentController,
   createImagesControllers,
   loginController,
   createUserController,
