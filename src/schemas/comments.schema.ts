@@ -9,7 +9,12 @@ const commentSchemaReturn = createCommentSchema.extend({
     createdAt: z.string()
 })
 
+const updateCommentSchema = createCommentSchema.partial({
+    comment: true
+})
+
 export {
     createCommentSchema,
-    commentSchemaReturn
+    commentSchemaReturn,
+    updateCommentSchema
 }

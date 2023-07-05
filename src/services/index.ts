@@ -5,8 +5,10 @@ import { retriveCarsService } from "./cars/retriveCars.service";
 import { updateCarService } from "./cars/updateCar.services";
 
 import { createCommentService } from "./comments/createComment.service";
+import { deleteCommentService } from "./comments/deleteComment.service";
 import { listCommentsByIdService } from "./comments/listCommentById.service";
 import { listCommentService } from "./comments/listComments.service";
+import { updateCommentService } from "./comments/updateComment.service";
 
 import { createImagesService } from "./images/createImages.service";
 
@@ -27,6 +29,7 @@ export {
   createCommentService,
   listCommentsByIdService,
   listCommentService,
+  deleteCommentService,
   createImagesService,
   loginService,
   createUserService,
@@ -35,4 +38,5 @@ export {
   sendEmailResetPasswordService,
   retrieveUserService,
   updateUserService,
+  updateCommentService
 }
