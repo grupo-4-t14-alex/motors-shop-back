@@ -5,10 +5,16 @@ const createCommentSchema = z.object({
 })
 
 const commentSchemaReturn = createCommentSchema.extend({
-    id: z.string()
+    id: z.string(),
+    createdAt: z.string()
+})
+
+const updateCommentSchema = createCommentSchema.partial({
+    comment: true
 })
 
 export {
     createCommentSchema,
-    commentSchemaReturn
+    commentSchemaReturn,
+    updateCommentSchema
 }

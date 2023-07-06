@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { 
+import {
     createCarController,
     deleteCarController,
     listCarsController,
@@ -17,18 +17,19 @@ import {
     updateUserController
 } from "../controllers";
 
-import { 
-    ensureDataIsValidMiddleware, 
-    ensureIdExistsMiddleware, 
-    ensureUserIsAdvertiserMiddleware, 
-    validateTokenMiddleware 
+import {
+    ensureDataIsValidMiddleware,
+    ensureIdExistsMiddleware,
+    ensureUserIsAdvertiserMiddleware,
+    validateTokenMiddleware
 } from "../middlewares";
 
-import { 
+import {
     createCarSchema,
-    createCommentSchema, 
-    updateCarSchema } from "../schemas";
-    
+    createCommentSchema,
+    updateCarSchema
+} from "../schemas";
+
 import { files } from "./images.routes";
 
 export const swaggerRoutes: Router = Router();
@@ -246,7 +247,7 @@ swaggerRoutes.get("/cars", listCarsController);
  *     responses:
  *       200:
  *         description: Car retrieved successfully
- *        401:
+ *       401:
  *         description: Unauthorized access
  *       404:
  *         description: Car not found
@@ -374,7 +375,7 @@ swaggerRoutes.post("/comments/:userId/:carId", validateTokenMiddleware, ensureDa
  *     responses:
  *       200:
  *         description: Comments retrieved successfully
- *        500:
+ *       500:
  *         description: Internal server error
  */
 swaggerRoutes.get("/comments", listCommentsController);
@@ -412,11 +413,11 @@ swaggerRoutes.get("/comments", listCommentsController);
  *               banner:
  *                 type: string
  *                 format: binary
- *                 description: Banner image file (maxCount: 1)
+ *                 description: Banner image file (maxCount 1)
  *               photos:
  *                 type: string
  *                 format: binary
- *                 description: Array of photo image files (maxCount: 8)
+ *                 description: Array of photo image files (maxCount 8)
  *     responses:
  *       200:
  *         description: Images uploaded successfully
